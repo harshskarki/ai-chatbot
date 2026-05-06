@@ -40,6 +40,13 @@ async function sendMessage() {
     appendMessage("bot", data.response);
 }
 
+document.getElementById("user-input").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // stop newline
+        sendMessage(); // call your function
+    }
+});
+
 function appendMessage(sender, message) {
     const chatBox = document.getElementById("chat-box");
 
