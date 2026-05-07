@@ -1,14 +1,16 @@
 from flask import Flask, render_template, request, jsonify, session
 from groq import Groq
+from flask_cors import CORS
+from dotenv import load_dotenv
 import os
 
-from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
+
 app.secret_key = "supersecretkey"  # needed for session
 
-import os
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 # Initialize chat memory
